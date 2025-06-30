@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const savedTasks = localStorage.getItem('tasks')
 const initialState = {
   tasks: savedTasks ? JSON.parse(savedTasks) : [],
+//   tasks: [],
   filter: 'all',
 }
 
@@ -23,7 +24,7 @@ const taskSlice = createSlice({
           category: action.payload.category || 'Загальні',
        };
       state.tasks.push(newTask);
-      saveToLocalStorage(state);
+      saveToLocalStorage(state.tasks);
     },
     deleteTask: (state, action) => {
       state.tasks = state.tasks.filter(task => task.id !== action.payload)

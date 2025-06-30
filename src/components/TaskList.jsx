@@ -7,8 +7,6 @@ import {
 } from '@hello-pangea/dnd'
 import React, { useState } from 'react';
 
-
-
 const TaskList = () => {
     const [editingTaskId, setEditingTaskId] = useState(null);
     const [editForm, setEditForm] = useState({
@@ -46,7 +44,10 @@ const TaskList = () => {
     };
 
     const tasks = useSelector((state) => {
-        const { tasks, filter } = state.tasks
+        const { tasks, filter } = state.taskState;
+        console.log("taskssss",state.taskState)
+        // console.log("taskssss  22",state.tasks.tasks.tasks.tasks.tasks)
+
         switch (filter) {
           case 'active':
             return tasks.filter(task => !task.completed)
